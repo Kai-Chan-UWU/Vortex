@@ -1,5 +1,5 @@
 import express from 'express';
-import { start, end, fetchData } from '../controllers/getDATA.js'
+import fetchData from '../controllers/getDATA.js'
 
 const router = express.Router();
 
@@ -12,9 +12,6 @@ router.param('table_name', (req, res, next, table) => {
 	req.user = { query: table };
 	next();
 });
-
-router.get('/start', start);
-router.get('/end', end);
 
 router.get('/:table_name', fetchData);
 
